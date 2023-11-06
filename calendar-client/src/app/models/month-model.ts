@@ -1,5 +1,7 @@
 import { DayModel } from "./day-model"
 
+enum MonthNames {'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'}
+
 export class MonthModel {
     constructor(private dateInfo: Date) {}
 
@@ -31,6 +33,6 @@ export class MonthModel {
     }
 
     generateMonthInfo() {
-        return `${this.month + 1}, ${this.year}`
+        return `${MonthNames[this.month]}, ${this.year}`
     }
 }

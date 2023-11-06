@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MonthModel } from '../models/month-model';
 import { DayModel } from '../models/day-model';
 
-
 @Component({
   selector: 'app-month',
   templateUrl: './month.component.html',
@@ -14,6 +13,8 @@ export class MonthComponent {
 
   weekdays: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
+  
+
   currentMonth: MonthModel = new MonthModel(new Date())
   monthOffset: number = 0
   activeMonth: MonthModel = this.currentMonth
@@ -21,8 +22,8 @@ export class MonthComponent {
   monthInfo: string = this.activeMonth.generateMonthInfo()
 
 
-  changeOffset(incDec: number) {
-    this.monthOffset += incDec
+  changeOffset(increment: number) {
+    this.monthOffset += increment
     this.activeMonth = new MonthModel(new Date(this.currentMonth.year, this.currentMonth.month + this.monthOffset))
     this.calendarDays = this.activeMonth.generateCalendar()
     this.monthInfo = this.activeMonth.generateMonthInfo()
