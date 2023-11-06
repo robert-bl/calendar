@@ -1,1 +1,15 @@
-<p>month works!</p>
+<div class="container">
+    <p class="month-info">{{monthInfo}}</p>
+    
+    <div class="weekday-header">
+        <div class="weekday" *ngFor="let weekday of weekdays">
+            <p>{{weekday}}</p>
+        </div>
+    </div>
+
+    <div class="calendar-days">
+        <div class="datebox" *ngFor="let date of calendarDays">
+            <p>{{date}}</p>
+        </div>
+    </div>
+</div>

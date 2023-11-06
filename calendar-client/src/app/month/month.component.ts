@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MonthModel } from '../models/month-model';
+
 
 @Component({
   selector: 'app-month',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./month.component.css']
 })
 export class MonthComponent {
+
+  constructor () {}
+
+  ngOnInit() {
+  }
+
+  weekdays: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+  currentMonth = new MonthModel(new Date())
+  calendarDays = this.currentMonth.generateDates()
+  monthInfo = this.currentMonth.generateMonthInfo()
 
 }

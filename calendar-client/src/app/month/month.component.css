@@ -1,0 +1,27 @@
+.weekday-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.weekday {
+    width: 14%;
+}
+
+.calendar-days {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.datebox {
+    width: 14%;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    margin: 1px;
+}
+
+.month-info {
+    display: flex;
+    justify-content: right;
+}
