@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MonthModel } from '../models/month-model';
+import { DayModel } from '../models/day-model';
 
 
 @Component({
@@ -11,13 +12,12 @@ export class MonthComponent {
 
   constructor () {}
 
-  ngOnInit() {
-  }
-
   weekdays: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-  currentMonth = new MonthModel(new Date())
-  calendarDays = this.currentMonth.generateDates()
-  monthInfo = this.currentMonth.generateMonthInfo()
+  currentMonth: MonthModel = new MonthModel(new Date())
+  monthOffset: number = 0
+  activeMonth: MonthModel = new MonthModel(new Date(this.currentMonth.year, this.currentMonth.month + this.monthOffset))
+  calendarDays: DayModel[] = this.activeMonth.generateCalendar()
+  monthInfo: string = this.activeMonth.generateMonthInfo()
 
 }

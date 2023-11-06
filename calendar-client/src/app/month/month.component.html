@@ -9,7 +9,13 @@
 
     <div class="calendar-days">
         <div class="datebox" *ngFor="let date of calendarDays">
-            <p>{{date}}</p>
+            <div *ngIf="date.dateInfo.getMonth() === activeMonth.month; then thisMonth else adjacentMonth"></div>
+            <ng-template #thisMonth>
+                <p class="active-month">{{date.date}}</p>
+            </ng-template>
+            <ng-template #adjacentMonth>
+                <p class="inactive-month">{{date.date}}</p>
+            </ng-template>            
         </div>
     </div>
 </div>

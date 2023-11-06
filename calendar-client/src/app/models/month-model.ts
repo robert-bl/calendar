@@ -1,3 +1,5 @@
+import { DayModel } from "./day-model"
+
 export class MonthModel {
     constructor(private dateInfo: Date) {}
 
@@ -5,29 +7,24 @@ export class MonthModel {
     year = this.dateInfo.getFullYear()
     firstWeekday = new Date(this.year, this.month, 1).getDay()
 
-    calendarDays: string[] = []
-    
-    printDateInfo () {
-        console.log(this.dateInfo)
-        console.log(this.month)
-        console.log(this.year)
-        console.log(this.firstWeekday)
-    }
+    calendarDays: DayModel[] = []
 
-    generateDates() {
-        let paddingDay: number = 0
+    generateCalendar() {
+        let prevMonthPaddingDays: number = 0
+        let nextMonthPaddingDays: number = 0
         let date: number = 1
 
-        while (paddingDay < this.firstWeekday) {
-            this.calendarDays.push('')
-            paddingDay++
+        while (prevMonthPaddingDays < this.firstWeekday) {
+            this.calendarDays.push(new DayModel(new Date(this.year, this.month, 1 - this.firstWeekday + prevMonthPaddingDays)))
+            prevMonthPaddingDays++
         }
         while (date <= new Date(this.year, this.month + 1, 0).getDate()) {
-            this.calendarDays.push(String(date))
+            this.calendarDays.push(new DayModel(new Date(this.year, this.month, date)))
             date++
         }
         while (this.calendarDays.length % 7 !== 0) {
-            this.calendarDays.push('')
+            this.calendarDays.push(new DayModel(new Date(new Date(this.year, this.month + 1, 1 + nextMonthPaddingDays))))
+            nextMonthPaddingDays++
         }
 
         return this.calendarDays

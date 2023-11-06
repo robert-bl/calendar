@@ -1,6 +1,5 @@
 .weekday-header {
     display: flex;
-    justify-content: space-between;
 }
 
 .weekday {
@@ -24,4 +23,8 @@
 .month-info {
     display: flex;
     justify-content: right;
+}
+
+.inactive-month {
+    color: gray;
 }
