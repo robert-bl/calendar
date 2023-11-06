@@ -1,6 +1,10 @@
 <div class="container">
     <p class="month-info">{{monthInfo}}</p>
-    
+
+    <div class="flip-button-container">
+        <button (click)="changeOffset(-1)">&lt;</button>
+        <button (click)="changeOffset(1)">&gt;</button>
+    </div>
     <div class="weekday-header">
         <div class="weekday" *ngFor="let weekday of weekdays">
             <p>{{weekday}}</p>

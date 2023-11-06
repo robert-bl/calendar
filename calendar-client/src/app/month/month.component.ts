@@ -16,8 +16,15 @@ export class MonthComponent {
 
   currentMonth: MonthModel = new MonthModel(new Date())
   monthOffset: number = 0
-  activeMonth: MonthModel = new MonthModel(new Date(this.currentMonth.year, this.currentMonth.month + this.monthOffset))
+  activeMonth: MonthModel = this.currentMonth
   calendarDays: DayModel[] = this.activeMonth.generateCalendar()
   monthInfo: string = this.activeMonth.generateMonthInfo()
 
+
+  changeOffset(incDec: number) {
+    this.monthOffset += incDec
+    this.activeMonth = new MonthModel(new Date(this.currentMonth.year, this.currentMonth.month + this.monthOffset))
+    this.calendarDays = this.activeMonth.generateCalendar()
+    this.monthInfo = this.activeMonth.generateMonthInfo()
+  }
 }
