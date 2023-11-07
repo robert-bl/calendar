@@ -1,25 +1,38 @@
-<div class="container">
-    <p class="month-info">{{monthInfo}}</p>
+<div>
+    <div class="container-fluid">
+        <p class="month-info">{{monthInfo}}</p>
 
-    <div class="flip-button-container">
-        <button (click)="changeOffset(-1)">&lt;</button>
-        <button (click)="changeOffset(1)">&gt;</button>
+        <div class="flip-button-container">
+            <button (click)="shiftMonth(-1)">&lt;</button>
+            <button (click)="shiftMonth(1)">&gt;</button>
+        </div>
     </div>
-    <div class="weekday-header">
-        <div class="weekday" *ngFor="let weekday of weekdays">
-            <p>{{weekday}}</p>
+    <div class="container-fluid calendar-container">
+        <div class="weekday-header">
+            <div class="weekday" *ngFor="let weekday of weekdays">
+                <p>{{weekday}}</p>
+            </div>
+        </div>
+
+        <div class="calendar-days">
+                <div class="datebox" *ngFor="let date of calendarDays">
+                    <div *ngIf="checkIfCurrentMonth(date.month); then thisMonth else adjacentMonth"></div>
+                        
+                        <ng-template #thisMonth>
+                            <div  *ngIf="checkIfCurrentDate(date); then today else notToday"></div>
+                                <ng-template #today>
+                                    <p class="today p-2">{{date.date}}</p>
+                                </ng-template>
+                                <ng-template #notToday>
+                                    <p class="active-month p-2">{{date.date}}</p>
+                                </ng-template>
+                        </ng-template>
+
+                        <ng-template #adjacentMonth>
+                            <p class="inactive-month p-2">{{date.date}}</p>
+                        </ng-template>            
+                </div>
         </div>
     </div>
 
-    <div class="calendar-days">
-        <div class="datebox" *ngFor="let date of calendarDays">
-            <div *ngIf="date.dateInfo.getMonth() === activeMonth.month; then thisMonth else adjacentMonth"></div>
-            <ng-template #thisMonth>
-                <p class="active-month p-2">{{date.date}}</p>
-            </ng-template>
-            <ng-template #adjacentMonth>
-                <p class="inactive-month p-2">{{date.date}}</p>
-            </ng-template>            
-        </div>
-    </div>
 </div>

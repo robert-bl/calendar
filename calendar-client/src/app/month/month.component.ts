@@ -7,25 +7,30 @@ import { DayModel } from '../models/day-model';
   templateUrl: './month.component.html',
   styleUrls: ['./month.component.css']
 })
-export class MonthComponent {
+export class MonthComponent{
+
+  currentDate: Date = new Date()
 
   constructor () {}
 
-  weekdays: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  weekdays: string[] = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.']
 
-  
-
-  currentMonth: MonthModel = new MonthModel(new Date())
-  monthOffset: number = 0
-  activeMonth: MonthModel = this.currentMonth
+  activeMonth: MonthModel = new MonthModel(this.currentDate)
   calendarDays: DayModel[] = this.activeMonth.generateCalendar()
   monthInfo: string = this.activeMonth.generateMonthInfo()
 
 
-  changeOffset(increment: number) {
-    this.monthOffset += increment
-    this.activeMonth = new MonthModel(new Date(this.currentMonth.year, this.currentMonth.month + this.monthOffset))
+  shiftMonth(direction: number) {
+    this.activeMonth.changeMonth(this.activeMonth.year, this.activeMonth.month + direction)
     this.calendarDays = this.activeMonth.generateCalendar()
     this.monthInfo = this.activeMonth.generateMonthInfo()
+  }
+
+  checkIfCurrentDate(date: DayModel) {
+    return date.date === this.currentDate.getDate() && date.month === this.currentDate.getMonth() && date.year === this.currentDate.getFullYear() ? true : false
+  }
+
+  checkIfCurrentMonth(dateMonth: number) {
+    return dateMonth === this.activeMonth.month ? true : false
   }
 }
