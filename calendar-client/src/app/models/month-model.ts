@@ -22,6 +22,11 @@ export class MonthModel {
         let date: number = 1
         let prevMonthPaddingDays: number = -firstWeekday
         let nextMonthPaddingDays: number = 1
+        let today = new Date()
+
+        const checkIfCurrentDate = () => {
+            return date === today.getDate() && this.month === today.getMonth() && this.year === today.getFullYear()
+        }
         
         while (prevMonthPaddingDays < 0) {
             calendar.push(new DayModel(
@@ -32,7 +37,7 @@ export class MonthModel {
         while (date <= lastDateOfMonth) {
             calendar.push(new DayModel(
                 new Date(this.year, this.month, date),
-                (date === new Date().getDate()) ? 'today' : 'this-month'))
+                checkIfCurrentDate() ? 'today' : 'this-month'))
             date++
         }
         while (calendar.length % 7 !== 0) {
