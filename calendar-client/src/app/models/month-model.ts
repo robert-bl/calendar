@@ -7,37 +7,42 @@ export class MonthModel {
 
     month = this.dateInfo.getMonth()
     year = this.dateInfo.getFullYear()
-    firstWeekday = new Date(this.year, this.month, 1).getDay()
 
-    // calendarDays: DayModel[] = []
 
     changeMonth(year: number, month: number) {
         this.dateInfo = new Date(year, month)
         this.month = this.dateInfo.getMonth()
         this.year = this.dateInfo.getFullYear()
-        this.firstWeekday = new Date(this.year, this.month, 1).getDay()
     }
 
     generateCalendar() {
-        let calendarDays: DayModel[] = []
-        let prevMonthPaddingDays: number = 0
-        let nextMonthPaddingDays: number = 0
+        let calendar: DayModel[] = []
+        let firstWeekday = new Date(this.year, this.month, 1).getDay()
+        let lastDateOfMonth: number = new Date(this.year, this.month + 1, 0).getDate()
         let date: number = 1
-
-        while (prevMonthPaddingDays < this.firstWeekday) {
-            calendarDays.push(new DayModel(new Date(this.year, this.month, 1 - this.firstWeekday + prevMonthPaddingDays)))
+        let prevMonthPaddingDays: number = -firstWeekday
+        let nextMonthPaddingDays: number = 1
+        
+        while (prevMonthPaddingDays < 0) {
+            calendar.push(new DayModel(
+                new Date(this.year, this.month, prevMonthPaddingDays),
+                'adjacent-month'))
             prevMonthPaddingDays++
         }
-        while (date <= new Date(this.year, this.month + 1, 0).getDate()) {
-            calendarDays.push(new DayModel(new Date(this.year, this.month, date)))
+        while (date <= lastDateOfMonth) {
+            calendar.push(new DayModel(
+                new Date(this.year, this.month, date),
+                (date === new Date().getDate()) ? 'today' : 'this-month'))
             date++
         }
-        while (calendarDays.length % 7 !== 0) {
-            calendarDays.push(new DayModel(new Date(new Date(this.year, this.month + 1, 1 + nextMonthPaddingDays))))
+        while (calendar.length % 7 !== 0) {
+            calendar.push(
+                new DayModel(new Date(this.year, this.month + 1, nextMonthPaddingDays),
+                'adjacent-month'))
             nextMonthPaddingDays++
         }
 
-        return calendarDays
+        return calendar
     }
 
     generateMonthInfo() {

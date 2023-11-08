@@ -15,22 +15,8 @@
         </div>
 
         <div class="calendar-days">
-                <div class="datebox" *ngFor="let date of calendarDays">
-                    <div *ngIf="checkIfCurrentMonth(date.month); then thisMonth else adjacentMonth"></div>
-                        
-                        <ng-template #thisMonth>
-                            <div  *ngIf="checkIfCurrentDate(date); then today else notToday"></div>
-                                <ng-template #today>
-                                    <p class="today p-2">{{date.date}}</p>
-                                </ng-template>
-                                <ng-template #notToday>
-                                    <p class="active-month p-2">{{date.date}}</p>
-                                </ng-template>
-                        </ng-template>
-
-                        <ng-template #adjacentMonth>
-                            <p class="inactive-month p-2">{{date.date}}</p>
-                        </ng-template>            
+                <div class="datebox" *ngFor="let date of calendar">
+                    <div [ngClass]="date.calendarDateClass">{{date.date}}</div>
                 </div>
         </div>
     </div>
