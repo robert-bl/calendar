@@ -14,7 +14,7 @@
 
 .datebox {
     width: 14%;
-    height: 15vh;
+    height: 12vh;
     border: solid;
     border-color: black;
     border-width: 1px;
@@ -33,4 +33,12 @@
 
 .today {
     color: teal;
+}
+
+@media (max-width: 750px) {
+    .datebox {
+        height: auto;
+        aspect-ratio: 1/1;
+    }
+    
 }
