@@ -9,13 +9,13 @@ export class MonthModel {
     year = this.dateInfo.getFullYear()
 
 
-    changeMonth(year: number, month: number) {
+    changeMonth(year: number, month: number): void {
         this.dateInfo = new Date(year, month)
         this.month = this.dateInfo.getMonth()
         this.year = this.dateInfo.getFullYear()
     }
 
-    generateCalendar() {
+    generateCalendar(): DayModel[] {
         let calendar: DayModel[] = []
         let firstWeekday = new Date(this.year, this.month, 1).getDay()
         let lastDateOfMonth: number = new Date(this.year, this.month + 1, 0).getDate()
@@ -24,7 +24,7 @@ export class MonthModel {
         let nextMonthPaddingDays: number = 1
         let today = new Date()
 
-        const checkIfCurrentDate = () => {
+        const checkIfCurrentDate = (): boolean => {
             return date === today.getDate() && this.month === today.getMonth() && this.year === today.getFullYear()
         }
         
@@ -50,7 +50,7 @@ export class MonthModel {
         return calendar
     }
 
-    generateMonthInfo() {
+    generateMonthInfo(): string {
         return `${MonthNames[this.month]}, ${this.year}`
     }
 }
