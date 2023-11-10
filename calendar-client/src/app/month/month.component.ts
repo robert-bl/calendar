@@ -11,7 +11,7 @@ import { EventService } from '../../shared/services/EventServices';
 })
 export class MonthComponent implements OnInit{
 
-  currentDate: Date = new Date()
+
 
   constructor (private events: EventService) {}
 
@@ -21,9 +21,14 @@ export class MonthComponent implements OnInit{
     })
   }
 
+  //hardcode variables
   weekdays: string[] = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.']
 
+  //current temporal variables
+  currentDate: Date = new Date()
   activeMonth: MonthModel = new MonthModel(this.currentDate)
+
+  //display variables
   calendar: DayModel[] = this.activeMonth.generateCalendar()
   monthInfo: string = this.activeMonth.generateMonthInfo()
 
@@ -32,10 +37,6 @@ export class MonthComponent implements OnInit{
     this.activeMonth.changeMonth(this.activeMonth.year, this.activeMonth.month + direction)
     this.calendar = this.activeMonth.generateCalendar()
     this.monthInfo = this.activeMonth.generateMonthInfo()
-  }
-
-  print(input: any) {
-    console.log(input)
   }
 
 }

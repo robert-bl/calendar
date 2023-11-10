@@ -4,6 +4,7 @@
         <shift-cal></shift-cal>
     </div>
     <div class="container-fluid">
+
         <div class="weekday-header">
             <div class="weekday" *ngFor="let weekday of weekdays">
                 <p>{{weekday}}</p>
@@ -15,6 +16,7 @@
                     <div [ngClass]="date.calendarDateClass">{{date.date}}</div>
                 </div>
         </div>
+        
     </div>
 
 </div>
