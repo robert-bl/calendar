@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MonthComponent } from './month/month.component';
 import { ShiftCalComponent } from './shift-cal/shift-cal.component';
+import { WeekComponent } from './week/week.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MonthComponent,
-    ShiftCalComponent
+    ShiftCalComponent,
+    WeekComponent
   ],
   imports: [
     BrowserModule,
