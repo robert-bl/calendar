@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "calendar-client:build:production"
+              "buildTarget": "calendar-client:build:production"
             },
             "development": {
-              "browserTarget": "calendar-client:build:development"
+              "buildTarget": "calendar-client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "calendar-client:build"
+            "buildTarget": "calendar-client:build"
           }
         },
         "test": {

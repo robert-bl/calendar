@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-enum CalendarScales {'day', 'week', 'month'}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,10 +7,10 @@ enum CalendarScales {'day', 'week', 'month'}
 })
 export class AppComponent {
   // title = 'calendar-client';
-  calendarScale: string = CalendarScales[2]
+  calendarScale: string = 'month'
 
-  changeCalScale(e: number) {
-    this.calendarScale = CalendarScales[e]
+  changeCalScale(e: string) {
+    this.calendarScale = `${e}`
   }
 
 }

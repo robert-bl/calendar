@@ -3,11 +3,25 @@
     [(ngModel)]="calendarScale"
     (ngModelChange)="changeCalScale($event)"
 >
-    <option value="0">Day</option>
-    <option value="1">Week</option>
-    <option value="2" selected>Month</option>
+    <option value="day">day</option>
+    <option value="week">week</option>
+    <option value="month" selected>month</option>
 </select>
 
-<month-calendar></month-calendar>
+
+<div>
+    @switch (calendarScale) {
+        @case ('month') {
+            <month-calendar></month-calendar>
+        }
+        @case ('week') {
+            <week-calendar></week-calendar>
+        }
+        @default {
+            <month-calendar></month-calendar>
+        }
+    }
+
+</div>
 
 <!-- <router-outlet></router-outlet> -->
