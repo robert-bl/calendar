@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<select
+    class="form-select"
+    [(ngModel)]="calendarScale"
+    (ngModelChange)="changeCalScale($event)"
+>
+    <option value="0">Day</option>
+    <option value="1">Week</option>
+    <option value="2" selected>Month</option>
+</select>
+
+<month-calendar></month-calendar>
+
+<!-- <router-outlet></router-outlet> -->

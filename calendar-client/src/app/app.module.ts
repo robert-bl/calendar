@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MonthComponent } from './month/month.component';
 import { ShiftCalComponent } from './shift-cal/shift-cal.component';
 import { WeekComponent } from './week/week.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { WeekComponent } from './week/week.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

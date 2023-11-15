@@ -3,7 +3,7 @@ import { WeekModel } from '../models/week-model';
 import { DayModel } from '../models/day-model';
 
 @Component({
-  selector: 'app-week',
+  selector: 'week-calendar',
   templateUrl: './week.component.html',
   styleUrls: ['./week.component.css']
 })
