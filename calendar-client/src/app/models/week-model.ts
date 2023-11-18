@@ -18,7 +18,6 @@ export class WeekModel {
         }
 
         for (let i = 0; i < 7; i++) {
-            let insertDate = 
             calendar.push(new DayModel(new Date(this.year, this.month, this.date - dayOfWeek), checkIfCurrentDate() ? 'today' : ''))
             dayOfWeek--
         }
