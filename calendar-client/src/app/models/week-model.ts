@@ -25,4 +25,11 @@ export class WeekModel {
         return calendar
     }
 
+    changeWeek(year: number, month: number, date:number): void {
+        this.dateInfo = new Date(year, month, date)
+        this.date = this.dateInfo.getDate()
+        this.month = this.dateInfo.getMonth()
+        this.year = this.dateInfo.getFullYear()
+    }
+
 }

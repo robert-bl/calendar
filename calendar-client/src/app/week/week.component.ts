@@ -1,24 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeekModel } from '../models/week-model';
 import { DayModel } from '../models/day-model';
+import { EventService } from 'src/shared/services/EventServices';
 
 @Component({
   selector: 'week-calendar',
   templateUrl: './week.component.html',
   styleUrls: ['./week.component.css']
 })
-export class WeekComponent {
+export class WeekComponent implements OnInit {
 
+  constructor (private events: EventService) {}
 
-
-
-  // constructor (private events: EventService) {}
-
-  // ngOnInit(): void {
-  //   this.events.listen('shiftCalendar', (direction: number) => {
-  //     this.shiftMonth(direction)
-  //   })
-  // }
+  ngOnInit(): void {
+    this.events.listen('shiftCalendar', (direction: number) => {
+      this.shiftWeek(direction)
+    })
+  }
 
   //hardcode variables
   weekdays: string[] = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.']
@@ -32,10 +30,10 @@ export class WeekComponent {
   weekInfo: string = 'this.activeMonth.generateMonthInfo()'
 
 
-  // shiftMonth(direction: number): void {
-  //   this.activeMonth.changeMonth(this.activeMonth.year, this.activeMonth.month + direction)
-  //   this.calendar = this.activeMonth.generateCalendar()
-  //   this.monthInfo = this.activeMonth.generateMonthInfo()
-  // }
+  shiftWeek(direction: number): void {
+    this.activeWeek.changeWeek(this.activeWeek.year, this.activeWeek.month, this.activeWeek.date + direction*7)
+    this.calendar = this.activeWeek.generateCalendar()
+    // this.monthInfo = this.activeMonth.generateMonthInfo()
+  }
 
 }
