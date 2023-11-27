@@ -1,7 +1,7 @@
 <select
     class="form-select"
-    [(ngModel)]="calendarScale"
-    (ngModelChange)="changeCalScale($event)"
+    [(ngModel)]="calendarResolution().value"
+    (ngModelChange)="logChange($event)"
 >
     <option value="day">day</option>
     <option value="week">week</option>
@@ -10,7 +10,7 @@
 
 
 <div>
-    @switch (calendarScale) {
+    @switch (calendarResolution().value) {
         @case ('month') {
             <month-calendar></month-calendar>
         }
