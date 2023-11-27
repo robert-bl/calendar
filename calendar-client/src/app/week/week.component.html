@@ -6,15 +6,17 @@
     <div class="container-fluid">
 
         <div class="weekday-header">
-            <div class="weekday" *ngFor="let weekday of weekdays">
-                <p>{{weekday}}</p>
-            </div>
+            @for (weekday of weekdays; track $index) {
+                <div class="weekday">{{weekday}}</div>
+            }
         </div>
 
         <div class="calendar-days">
-                <div class="datebox" *ngFor="let date of calendar">
+            @for (date of calendar; track $index) {
+                <div class="datebox">
                     <div [ngClass]="date.calendarDateClass">{{date.date}}</div>
                 </div>
+            }
         </div>
         
     </div>
