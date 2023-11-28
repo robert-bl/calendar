@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CalendarResolutionComponent } from './calendar-resolution/calendar-resolution.component';
 import { DayComponent } from './day/day.component';
 import { MonthComponent } from './month/month.component';
 import { ShiftCalComponent } from './shift-cal/shift-cal.component';
@@ -15,12 +16,13 @@ import { FormsModule } from '@angular/forms';
     DayComponent,
     MonthComponent,
     ShiftCalComponent,
-    WeekComponent
+    WeekComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CalendarResolutionComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
