@@ -1,6 +1,11 @@
 import { DayModel } from "./day-model"
+import { Injectable } from "@angular/core"
 
 enum MonthNames {'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'}
+
+@Injectable({
+    providedIn: 'root'
+})
 
 export class MonthModel {
     constructor(private dateInfo: Date) {}

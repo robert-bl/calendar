@@ -9,10 +9,12 @@ import { MonthComponent } from './month/month.component';
 import { ShiftCalComponent } from './shift-cal/shift-cal.component';
 import { WeekComponent } from './week/week.component';
 import { FormsModule } from '@angular/forms';
+import { MonthModel } from './models/month-model';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CalendarResolutionComponent,
     DayComponent,
     MonthComponent,
     ShiftCalComponent,
@@ -22,7 +24,6 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    CalendarResolutionComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

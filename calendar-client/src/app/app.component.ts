@@ -11,10 +11,4 @@ export class AppComponent {
   // title = 'calendar-client';
   calendarResolution = calendarResolutionStore
 
-  logChange(e: string) {
-    // this.calendarScale = `${e}`
-    console.log(e)
-    console.log(calendarResolutionStore())
-  }
-
 }

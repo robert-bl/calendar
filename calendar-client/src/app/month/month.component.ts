@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { MonthModel } from '../models/month-model';
 import { DayModel } from '../models/day-model';
 import { EventService } from '../../shared/services/EventServices';
+import { DateStoreClass } from 'src/shared/services/DateStore';
 
 
 @Component({
   selector: 'month-calendar',
   templateUrl: './month.component.html',
-  styleUrls: ['./month.component.css']
+  styleUrls: ['./month.component.css'],
 })
 export class MonthComponent implements OnInit{
-
-
 
   constructor (private events: EventService) {}
 
@@ -26,7 +25,8 @@ export class MonthComponent implements OnInit{
 
   //current temporal variables
   currentDate: Date = new Date()
-  activeMonth: MonthModel = new MonthModel(this.currentDate)
+  activeMonth: MonthModel = new MonthModel(new Date())
+  // activeMonth: MonthModel = new MonthModel(dateStore().viewDate)
 
   //display variables
   calendar: DayModel[] = this.activeMonth.generateCalendar()
@@ -37,6 +37,10 @@ export class MonthComponent implements OnInit{
     this.activeMonth.changeMonth(this.activeMonth.year, this.activeMonth.month + direction)
     this.calendar = this.activeMonth.generateCalendar()
     this.monthInfo = this.activeMonth.generateMonthInfo()
+  }
+
+  change () {
+
   }
 
 }
