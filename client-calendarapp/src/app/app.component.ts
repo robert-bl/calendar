@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { dateStore } from 'src/shared/signals/DateStore';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client-calendarapp';
+
+  dateS = dateStore
+
+  resetActiveDate() {
+    dateStore.mutate(val => val.activeDate = new Date)
+  }
 }
