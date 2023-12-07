@@ -18,7 +18,4 @@ export class ShiftCalComponent {
     this.events.emit('shiftCalendar', direction)
   }
 
-  upDate () {
-    store.mutate()
-  }
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MonthModel } from '../models/month-model';
 import { DayModel } from '../models/day-model';
 import { EventService } from '../../shared/services/EventServices';
-import { DateStoreClass } from 'src/shared/services/DateStore';
 
 
 @Component({
