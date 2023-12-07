@@ -31,5 +31,14 @@
     border-bottom: 1px solid $divider-color;
 }
 .hour {
-    color: $primary-textcolor
+    color: $primary-textcolor;
+    position: relative;
+}
+
+.event {
+    height: 2rem;
+    width: 5rem;
+    background-color: red;
+    position: absolute;
+    left: 5rem;
 }

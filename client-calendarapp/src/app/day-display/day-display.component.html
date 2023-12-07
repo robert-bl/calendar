@@ -2,9 +2,16 @@
 <div class="day-card">
     <div class="date-number">{{dayInfo.date}}</div>
     <div class="hourly-display">
-        @for (hour of hours; track $index) {
+        @for (hour of hours; track hour; let idx = $index) {
             <div class="hour-spacer"></div>
-            <span class="hour">{{hour}}</span>
+            <span class="hour">
+                <div>{{hour}}</div>
+                @for (event of events; track $index) {
+                    @if (event.start === idx) {
+                        <div class="event">{{event.name}}</div>
+                    }
+                }
+            </span>
         }
     </div>
 </div>
