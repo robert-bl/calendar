@@ -1,0 +1,35 @@
+@import '../../variables';
+
+.day-card {
+    height: 80dvh;
+    width: 90dvw;
+    border: 1px solid $divider-color;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.date-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 0.25rem;
+    background-color: $accent-backcolor;
+    border-radius: 100%;
+}
+
+.hourly-display {
+    height: 100%;
+    margin: 1rem;
+    overflow-y: scroll;
+}
+
+.hour-spacer {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $divider-color;
+}
+.hour {
+    color: $primary-textcolor
+}

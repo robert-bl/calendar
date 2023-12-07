@@ -1,0 +1,10 @@
+<p>day-display works!</p>
+<div class="day-card">
+    <div class="date-number">{{dayInfo.date}}</div>
+    <div class="hourly-display">
+        @for (hour of hours; track $index) {
+            <div class="hour-spacer"></div>
+            <span class="hour">{{hour}}</span>
+        }
+    </div>
+</div>
